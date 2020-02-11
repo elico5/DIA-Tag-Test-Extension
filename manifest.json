@@ -1,14 +1,16 @@
 {
-  "name": "DIA Test Extension",
-  "description": "Chrome extension to programmatically inject intent.js tag."
-  "version": "1.0",
+  "name": "DIA Tag Test Extension",
+  "description": "Chrome extension to inject intent.js tag.",
+  "version": "0.1",
   "manifest_version": 2,
   "background": {
     "scripts": [
-      ""
+      "inject_intent.js"
     ],
-    "persistent": false,
-  "content_security_policy": "[POLICY STRING GOES HERE]"
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Test DIA Tag"
   }
 } 
  
