@@ -11,3 +11,11 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     // Execute code in current tab's context
     chrome.tabs.executeScript(tab.id, { code });
 });
+
+// Listener on tab updates
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    // Inject script into current tab's head
+    if (changeInfo.status == 'complete' && tab.active) {
+        chrome.tabs.executeScript(tabId, { code });
+    }
+});
