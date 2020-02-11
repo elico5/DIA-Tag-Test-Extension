@@ -11,6 +11,10 @@
   },
   "browser_action": {
     "default_title": "Test DIA Tag"
-  }
+  },
+  "permissions": [
+    "tabs",
+    "<all_urls>"
+  ]
 } 
  
