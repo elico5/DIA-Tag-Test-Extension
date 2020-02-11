@@ -1,0 +1,11 @@
+{
+  "name": "DIA Test Extension",
+  "description": "Chrome extension to programmatically inject intent.js tag."
+  "version": "1.0",
+  "manifest_version": 2,
+  "background": {
+    "scripts": [],
+    "persistent": false,
+  }
+} 
+ 
