@@ -6,16 +6,25 @@ const code = `
     document.head.appendChild(s);
 `;
 
-// Listener on extension icon
+// Initialization flags
+const enabled = [true, {color: "green"}], disabled = [false, {color: "red"}];
+let [on, color] = disabled;
+
+// Listener on icon click
 chrome.browserAction.onClicked.addListener(function(tab) {
-    // Execute code in current tab's context
-    chrome.tabs.executeScript(tab.id, { code });
+    if (on) {
+        [on, color] = disabled;
+    } else {
+        [on, color] = enabled;
+    }
+    chrome.browserAction.setBadgeBackgroundColor(color);
+    console.log(color);
 });
 
 // Listener on tab updates
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     // Inject script into current tab's head
-    if (changeInfo.status == 'complete' && tab.active) {
+    if (on && changeInfo.status == 'complete' && tab.active) {
         chrome.tabs.executeScript(tabId, { code });
     }
 });
