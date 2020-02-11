@@ -1,7 +1,7 @@
 // Set CDN's _.js path... inject script with source into DOM's head
 const cdnTag = 'https://codepen.io/elico5/pen/bGddMyK.js';
 const code = `
-    let s = document.createElement('script');
+    var s = document.createElement('script');
     s.setAttribute('src', '${cdnTag}');
     document.head.appendChild(s);
 `;
