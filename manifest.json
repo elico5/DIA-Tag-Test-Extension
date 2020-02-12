@@ -5,11 +5,12 @@
   "manifest_version": 2,
   "background": {
     "scripts": [
-      "inject_intent.js"
+      "./js/inject_intent.js"
     ],
     "persistent": false
   },
   "browser_action": {
+    "default_popup": "./ui/popup.html",
     "default_title": "Test DIA Tag"
   },
   "permissions": [

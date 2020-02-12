@@ -7,24 +7,24 @@ const code = `
 `;
 
 // Initialization flags
-const enabled = [true, {color: "green"}], disabled = [false, {color: "red"}];
-let [on, color] = disabled;
+const enabled = [true, './icons/enabled.png'], disabled = [false, './icons/disabled.png'];
+let [flag, path] = disabled;
 
 // Listener on icon click
-chrome.browserAction.onClicked.addListener(function(tab) {
-    if (on) {
-        [on, color] = disabled;
+chrome.browserAction.onClicked.addListener(function() {
+    if (flag) {
+        [flag, path] = disabled;
     } else {
-        [on, color] = enabled;
+        [flag, path] = enabled;
     }
-    chrome.browserAction.setBadgeBackgroundColor(color);
-    console.log(color);
+    chrome.browserAction.setIcon({ path });
+    console.log('hitting');
 });
 
 // Listener on tab updates
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     // Inject script into current tab's head
-    if (on && changeInfo.status == 'complete' && tab.active) {
+    if (flag && changeInfo.status == 'complete' && tab.active) {
         chrome.tabs.executeScript(tabId, { code });
     }
 });
