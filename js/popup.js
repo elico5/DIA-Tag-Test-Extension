@@ -39,7 +39,7 @@ const toggleActivity = function() {
 
 // Alter source for JS injection
 const updateInjectScript = function() {
-    const JS_SOURCE_CHANGE_REQUEST = generateMessageJS(document.getElementById('js-source').innerHTML);
+    const JS_SOURCE_CHANGE_REQUEST = generateMessageJS(document.getElementById('js-source').value);
     chrome.runtime.sendMessage(JS_SOURCE_CHANGE_REQUEST, function(response) {
         updatePopup(response);
     });
